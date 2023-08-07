@@ -1,7 +1,32 @@
+
+'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
+import * as sass from 'sass';
+import { useEffect } from 'react';
 
-export default function Home() {
+export default  function Home() {
+  const getCss = async () => {
+    const result = await sass.compileStringAsync(`
+          h1 {
+            font-size: 40px;
+            code {
+              font-face: Roboto Mono;
+            }
+          }`);
+      return result;
+  }
+  
+
+  
+
+
+useEffect(() => {
+         
+  console.log(getCss())
+
+   // eslint-disable-next-line
+}, []);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
